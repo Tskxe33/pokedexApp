@@ -1,9 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {WelcomeScreenProps} from '../navigators/InitialNavigator';
 import {Fonts} from '../constants/Fonts';
 import {Colors} from '../constants/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   return (
