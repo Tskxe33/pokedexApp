@@ -1355,10 +1355,10 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-google-signin/google-signin@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-8.1.0.tgz#a9e1cf32b6ae6447dd5eceb8583261c2e4e4874b"
-  integrity sha512-63o8iJrihAuGDxvm8k8Ghy2rHha+OsQ8XrcbsOEhV/R9HTZL2qRyNwvm/NaHCCpuf/bywA8WFGerw+d8REDBKQ==
+"@react-native-google-signin/google-signin@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-8.0.1.tgz#b03e7fa07013800ec4cff47881e7704a9d8d917f"
+  integrity sha512-ZsHzul3FWM/En3Upx7++KNPVMJxPuzX1H6LWMDiwxlgMmJxpvKpq7UsW4vE3O8x6E6gLfbCFKpjRZXojwXaI+g==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
