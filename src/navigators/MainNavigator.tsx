@@ -10,6 +10,8 @@ import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import SwiperNavigator from './SwiperNavigator';
 import {Colors} from '../constants/Colors';
 import NATabBarItem from '../components/atoms/NATabBarItem';
+import GridNavigator from './GridNavigator';
+import TypesNavigator from './TypesNavigator';
 
 export type NewsParamList = {
   [AppRoute.SWIPER_NAVIGATOR]: undefined;
@@ -50,7 +52,7 @@ const MainNavigator: React.FC = () => {
       />
       <Tab.Screen
         name={AppRoute.GRID_NAVIGATOR}
-        component={SwiperNavigator}
+        component={GridNavigator}
         options={() => ({
           tabBarIcon: ({focused}) => (
             <NATabBarItem focused={focused} title={'Grid'} />
@@ -61,7 +63,7 @@ const MainNavigator: React.FC = () => {
 
       <Tab.Screen
         name={AppRoute.TYPES_NAVIGATOR}
-        component={SwiperNavigator}
+        component={TypesNavigator}
         options={() => ({
           tabBarIcon: ({focused}) => (
             <NATabBarItem focused={focused} title={'Types'} />
