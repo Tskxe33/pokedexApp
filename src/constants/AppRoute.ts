@@ -4,6 +4,7 @@ export enum AppRoute {
   SWIPER_SCREEN = 'Swiper Screen',
   GRID_SCREEN = 'Grid Screen',
   TYPES_SCREEN = 'Types Screen',
+  POKEMON_DETAILS_SCREEN = 'Pokemon Details Screen',
 
   MAIN_NAVIGATOR = 'Main Tab Navigator',
   SWIPER_NAVIGATOR = 'Swiper Stack Navigator',

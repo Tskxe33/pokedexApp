@@ -35,6 +35,7 @@ export const signOut = () => async (dispatch: Dispatch) => {
 export const isSignedIn = () => async (dispatch: Dispatch) => {
   try {
     const response = await LoginService.isSignedIn();
+
     dispatch({
       type: IS_LOGGED_IN,
       payload: response,

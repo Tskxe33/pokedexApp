@@ -32,11 +32,11 @@ const usersReducer = (
       return {
         ...state,
         user: action.payload,
+        isLoggedIn: false,
       };
     case IS_LOGGED_IN:
       return {
         ...state,
-        isLoggedIn: action.payload,
       };
 
     default:
