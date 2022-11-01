@@ -4,7 +4,7 @@ import {PokemonClient} from 'pokenode-ts';
 
 class PokemonService {
   getPokemons = async (offset?: number) => {
-    const response = await axios.get(`pokemon?limit=50&offset=${offset}`, {
+    const response = await axios.get(`pokemon?limit=5&offset=${offset}`, {
       baseURL: ENV_URL,
     });
 

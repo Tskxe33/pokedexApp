@@ -21,7 +21,7 @@ export default NATabBarItem;
 const styles = StyleSheet.create({
   text: {
     fontFamily: Fonts.ROBOTO_REGULAR,
-    color: Colors.COLOR_GREY_LIGHT,
+    color: Colors.COLOR_GREY_DARK,
     fontSize: 18,
     lineHeight: 21,
   },
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.ROBOTO_REGULAR,
     fontSize: 18,
     lineHeight: 21,
-    color: Colors.COLOR_PRIMARY_DARK,
+    color: Colors.COLOR_BLACK,
     textAlign: 'center',
   },
 

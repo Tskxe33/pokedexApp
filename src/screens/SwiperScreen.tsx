@@ -11,7 +11,7 @@ import {AppRoute} from '../constants/AppRoute';
 const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
   const pokemons = useSelector((state: RootState) => state.pokemons.pokemons);
   const dispatch = useDispatch<any>();
-  const randomNumber = Math.floor(Math.random() * 100) + 1;
+  const randomNumber = Math.floor(Math.random() * 400) + 1;
 
   useEffect(() => {
     dispatch(setPokemons(randomNumber));

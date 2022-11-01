@@ -79,7 +79,7 @@ export default MainNavigator;
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: Colors.COLOR_PRIMARY,
+    backgroundColor: Colors.COLOR_WHITE,
     ...StyleSheet.absoluteFillObject,
   },
 
