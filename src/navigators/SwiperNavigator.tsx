@@ -12,6 +12,7 @@ import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';
 import {Pokemon} from 'pokenode-ts';
 import PokemonDetailsScreen from '../screens/PokemonDetailsScreen';
+import NAPokemonPicker from '../components/molecules/NAPokemonPicker';
 
 export type SwiperNavigatorParamList = {
   [AppRoute.SWIPER_SCREEN]: undefined;
@@ -41,6 +42,7 @@ const SwiperNavigator: React.FC = () => {
       screenOptions={{
         animation: 'fade',
         title: '',
+        headerLeft: () => <NAPokemonPicker />,
         headerRight: () => (
           <NAHeaderButton onPress={() => dispatch(signOut())} />
         ),
