@@ -10,9 +10,14 @@ import {Text, TouchableOpacity} from 'react-native';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';
+import {Pokemon} from 'pokenode-ts';
+import PokemonDetailsScreen from '../screens/PokemonDetailsScreen';
 
 export type SwiperNavigatorParamList = {
   [AppRoute.SWIPER_SCREEN]: undefined;
+  [AppRoute.POKEMON_DETAILS_SCREEN]: {
+    pokemonDetails: Pokemon;
+  };
 };
 
 export interface SwiperNavigatorProps<
@@ -23,6 +28,8 @@ export interface SwiperNavigatorProps<
 }
 
 export type SwiperScreenProps = SwiperNavigatorProps<AppRoute.SWIPER_SCREEN>;
+export type PokemonDetailsScreenProps =
+  SwiperNavigatorProps<AppRoute.POKEMON_DETAILS_SCREEN>;
 
 const Stack = createNativeStackNavigator<SwiperNavigatorParamList>();
 
@@ -39,6 +46,10 @@ const SwiperNavigator: React.FC = () => {
         ),
       }}>
       <Stack.Screen name={AppRoute.SWIPER_SCREEN} component={SwiperScreen} />
+      <Stack.Screen
+        name={AppRoute.POKEMON_DETAILS_SCREEN}
+        component={PokemonDetailsScreen}
+      />
     </Stack.Navigator>
   );
 };
