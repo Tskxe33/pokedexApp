@@ -23,6 +23,22 @@ class PokemonService {
     const response = await api.getPokemonByName(pokemonName);
     return response;
   };
+
+  getAllTypes = async () => {
+    const response = await axios.get(`type/`, {
+      baseURL: ENV_URL,
+    });
+
+    return response.data;
+  };
+
+  getPokomonsByType = async (type: string) => {
+    const response = await axios.get(`type/${type}`, {
+      baseURL: ENV_URL,
+    });
+
+    return response.data;
+  };
 }
 
 export default new PokemonService();

@@ -3,18 +3,29 @@ import React, {useEffect, useState} from 'react';
 import {SwiperScreenProps} from '../navigators/SwiperNavigator';
 import NASwiper from '../components/organism/NASwiper';
 import {useDispatch, useSelector} from 'react-redux';
-import {setPokemons} from '../redux/actions/PokemonActions';
+import {
+  setAllTypes,
+  setPokemons,
+  setPokemonsByType,
+} from '../redux/actions/PokemonActions';
 import {RootState} from '../redux/reducers';
 import {Pokemon} from 'pokenode-ts';
 import {AppRoute} from '../constants/AppRoute';
 
 const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
   const pokemons = useSelector((state: RootState) => state.pokemons.pokemons);
+  const selectedType = useSelector(
+    (state: RootState) => state.pokemons.selectedType,
+  );
   const dispatch = useDispatch<any>();
   const randomNumber = Math.floor(Math.random() * 400) + 1;
 
   useEffect(() => {
-    dispatch(setPokemons(randomNumber));
+    dispatch(setAllTypes());
+
+    selectedType != ''
+      ? dispatch(setPokemonsByType())
+      : dispatch(setPokemons(randomNumber));
   }, []);
 
   const handleNavigate = (item: Pokemon) => {
