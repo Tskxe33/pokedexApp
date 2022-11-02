@@ -5,6 +5,7 @@ import {Colors, pokemonTypeBackgrounds} from '../../constants/Colors';
 import {Fonts} from '../../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {AppRoute} from '../../constants/AppRoute';
+import FastImage from 'react-native-fast-image';
 
 interface GridListItemProps {
   item: Pokemon;
@@ -25,8 +26,11 @@ const GridListItem: React.FC<GridListItemProps> = ({item}) => {
         backgroundColor: pokemonTypeBackgrounds[item.types[0].type.name],
       }}>
       <Text style={styles.itemName}>{item.name}</Text>
-      <Image
-        source={{uri: item.sprites.other?.home.front_default}}
+      <FastImage
+        source={{
+          uri: item.sprites.other?.home.front_default,
+          priority: FastImage.priority.normal,
+        }}
         style={styles.image}
       />
     </TouchableOpacity>

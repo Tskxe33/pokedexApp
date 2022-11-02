@@ -3,6 +3,7 @@ import React from 'react';
 import {Pokemon, PokemonType} from 'pokenode-ts';
 import {Colors, pokemonTypeBackgrounds} from '../../constants/Colors';
 import {Fonts} from '../../constants/Fonts';
+import FastImage from 'react-native-fast-image';
 
 interface SwiperItemProps {
   pokemon: Pokemon;
@@ -31,8 +32,11 @@ const SwiperItem: React.FC<SwiperItemProps> = ({pokemon, handleNavigate}) => {
         backgroundColor: pokemonTypeBackgrounds[pokemon.types[0].type.name],
       }}>
       <Text style={styles.text}>{pokemon.name}</Text>
-      <Image
-        source={{uri: pokemon.sprites.other?.home.front_default}}
+      <FastImage
+        source={{
+          uri: pokemon.sprites.other?.home.front_default,
+          priority: FastImage.priority.normal,
+        }}
         style={styles.image}
       />
       <View style={styles.typesContainer}>{handleRenderTypesItem()}</View>

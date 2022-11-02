@@ -4,8 +4,9 @@ import {Pokemon} from 'pokenode-ts';
 import GridListItem from '../molecules/GridListItem';
 import {Fonts} from '../../constants/Fonts';
 import {Colors} from '../../constants/Colors';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {updatePokemons} from '../../redux/actions/PokemonActions';
+import {RootState} from '../../redux/reducers';
 
 interface GridListProps {
   pokemons: Pokemon[];
@@ -13,6 +14,9 @@ interface GridListProps {
 
 const GridList: React.FC<GridListProps> = ({pokemons}) => {
   const dispatch = useDispatch<any>();
+  const selectedType = useSelector(
+    (state: RootState) => state.pokemons.selectedType,
+  );
 
   const handleRenderListItem: ListRenderItem<Pokemon> = ({
     item,
@@ -23,7 +27,7 @@ const GridList: React.FC<GridListProps> = ({pokemons}) => {
   };
 
   const handleLoadMore = () => {
-    dispatch(updatePokemons());
+    if (selectedType === '') dispatch(updatePokemons());
   };
 
   return (
@@ -57,5 +61,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    paddingBottom: 60,
   },
 });
