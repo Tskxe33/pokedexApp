@@ -1,11 +1,15 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {PokemonDetailsScreenProps} from '../navigators/SwiperNavigator';
 import {Colors, pokemonTypeBackgrounds} from '../constants/Colors';
 import {Fonts} from '../constants/Fonts';
 import {PokemonType, PokemonStat} from 'pokenode-ts';
+import FastImage from 'react-native-fast-image';
 
-const PokemonDetailsScreen: React.FC<PokemonDetailsScreenProps> = ({route}) => {
+const PokemonDetailsScreen: React.FC<PokemonDetailsScreenProps> = ({
+  navigation,
+  route,
+}) => {
   const pokemonDetails = route.params.pokemonDetails;
 
   const handleRenderTypesItem = () => {
@@ -36,8 +40,11 @@ const PokemonDetailsScreen: React.FC<PokemonDetailsScreenProps> = ({route}) => {
       <View style={styles.mainContainer}>
         <Text style={styles.pokemonName}>{pokemonDetails.name}</Text>
 
-        <Image
-          source={{uri: pokemonDetails.sprites.other?.home.front_default}}
+        <FastImage
+          source={{
+            uri: pokemonDetails.sprites.other?.home.front_default,
+            priority: FastImage.priority.normal,
+          }}
           style={styles.image}
         />
 

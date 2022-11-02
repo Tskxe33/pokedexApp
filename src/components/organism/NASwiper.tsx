@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import SwiperItem from '../atoms/SwiperItem';
 import {Pokemon} from 'pokenode-ts';
@@ -12,19 +12,12 @@ interface NASwiperProps {
 }
 
 const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
-  const [loadMinimal, setLoadMinimal] = useState(false);
   const dispatch = useDispatch<any>();
 
   const handleLoadMore = (index: number) => {
     if (index === pokemons.length - 1) {
       dispatch(updatePokemons());
     }
-  };
-
-  const handleLoadMinimal = () => {
-    setTimeout(() => {
-      setLoadMinimal(true);
-    }, 400);
   };
 
   const handleRenderSwiperItem = () => {
@@ -42,7 +35,6 @@ const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
   return (
     <Swiper
       showsPagination={false}
-      loadMinimal={loadMinimal}
       loop={false}
       onIndexChanged={index => handleLoadMore(index)}>
       {handleRenderSwiperItem()}

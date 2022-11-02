@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../redux/reducers';
 import GridList from '../components/organism/GridList';
 import {Colors} from '../constants/Colors';
+import NAPokemonPicker from '../components/molecules/NAPokemonPicker';
 
 const GridScreen = () => {
   const pokemons = useSelector((state: RootState) => state.pokemons.pokemons);

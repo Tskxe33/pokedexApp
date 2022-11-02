@@ -1,4 +1,3 @@
-export const items = [
-  {label: 'Name', value: 'Name'},
-  {label: 'ability', value: 'Abilities'},
-];
+import {PickerItem} from '../models/Pokemon';
+
+export const items: PickerItem[] = [{label: 'All', value: 'All'}];
