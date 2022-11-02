@@ -1,13 +1,14 @@
 import {PokemonAction} from '../actions/actions.types';
 import {
   SET_ALL_TYPES,
+  SET_PICKER_ITEMS,
   SET_POKEMONS,
   SET_POKEMON_INFO,
   SET_SELECTED_TYPE,
   UPDATE_POKEMONS,
 } from '../actions/actionTypes/pokemonsActionTypes';
 import {Pokemon} from 'pokenode-ts';
-import {TypeItem} from '../../models/Pokemon';
+import {PickerItem, TypeItem} from '../../models/Pokemon';
 
 interface InitialStateProps {
   pokemons: Pokemon[];
@@ -15,6 +16,7 @@ interface InitialStateProps {
   previous: string;
   allTypes: TypeItem[];
   selectedType: string;
+  pickerItems: PickerItem[];
 }
 
 const initialState: InitialStateProps = {
@@ -23,6 +25,7 @@ const initialState: InitialStateProps = {
   previous: '',
   allTypes: [],
   selectedType: '',
+  pickerItems: [],
 };
 
 const pokemonReducer = (
@@ -59,6 +62,12 @@ const pokemonReducer = (
       return {
         ...state,
         selectedType: action.payload,
+      };
+
+    case SET_PICKER_ITEMS:
+      return {
+        ...state,
+        pickerItems: action.payload,
       };
     default:
       return state;

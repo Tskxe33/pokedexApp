@@ -11,6 +11,8 @@ import {
 import {RootState} from '../redux/reducers';
 import {Pokemon} from 'pokenode-ts';
 import {AppRoute} from '../constants/AppRoute';
+import NAPokemonPicker from '../components/molecules/NAPokemonPicker';
+import {Colors} from '../constants/Colors';
 
 const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
   const pokemons = useSelector((state: RootState) => state.pokemons.pokemons);
@@ -36,6 +38,7 @@ const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
 
   return (
     <View style={styles.swiperContainer}>
+      <NAPokemonPicker />
       <NASwiper pokemons={pokemons} handleNavigate={handleNavigate} />
     </View>
   );
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Colors.COLOR_WHITE,
   },
 
   slide1: {

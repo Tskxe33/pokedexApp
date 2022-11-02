@@ -1,6 +1,7 @@
 import {User} from '../../models/Users';
 import {
   SET_ALL_TYPES,
+  SET_PICKER_ITEMS,
   SET_POKEMONS,
   SET_POKEMON_INFO,
   SET_SELECTED_TYPE,
@@ -14,7 +15,7 @@ import {
 } from './actionTypes/usersActionTypes';
 
 import {Pokemon} from 'pokenode-ts';
-import {TypeItem} from '../../models/Pokemon';
+import {PickerItem, TypeItem} from '../../models/Pokemon';
 
 export type UsersAction =
   | {
@@ -54,4 +55,8 @@ export type PokemonAction =
   | {
       type: UPDATE_TYPES;
       payload: TypeItem[];
+    }
+  | {
+      type: SET_PICKER_ITEMS;
+      payload: PickerItem[];
     };

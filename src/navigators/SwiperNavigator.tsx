@@ -6,7 +6,6 @@ import {
 } from '@react-navigation/native-stack';
 import {AppRoute} from '../constants/AppRoute';
 import SwiperScreen from '../screens/SwiperScreen';
-import {Text, TouchableOpacity} from 'react-native';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';

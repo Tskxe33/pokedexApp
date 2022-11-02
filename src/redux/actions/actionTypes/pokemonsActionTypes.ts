@@ -15,3 +15,6 @@ export type UPDATE_TYPES = typeof UPDATE_TYPES;
 
 export const SET_SELECTED_TYPE = 'SET_SELECTED_TYPE';
 export type SET_SELECTED_TYPE = typeof SET_SELECTED_TYPE;
+
+export const SET_PICKER_ITEMS = 'SET_PICKER_ITEMS';
+export type SET_PICKER_ITEMS = typeof SET_PICKER_ITEMS;

@@ -27,7 +27,7 @@ const GridList: React.FC<GridListProps> = ({pokemons}) => {
   };
 
   const handleLoadMore = () => {
-    if (selectedType === '') dispatch(updatePokemons());
+    dispatch(updatePokemons());
   };
 
   return (

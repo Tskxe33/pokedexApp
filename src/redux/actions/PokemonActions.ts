@@ -4,37 +4,42 @@ import PokemonService from '../../service/PokemonService';
 import {RootState} from '../reducers';
 import {
   SET_ALL_TYPES,
+  SET_PICKER_ITEMS,
   SET_POKEMONS,
   SET_POKEMON_INFO,
   UPDATE_POKEMONS,
 } from './actionTypes/pokemonsActionTypes';
 
-export const setPokemons = (offset: number) => async (dispatch: Dispatch) => {
-  try {
-    const response = await PokemonService.getPokemons(offset);
+export const setPokemons =
+  (offset: number) => async (dispatch: Dispatch | any) => {
+    try {
+      const response = await PokemonService.getPokemons(offset);
 
-    dispatch({
-      type: SET_POKEMON_INFO,
-      payload: response,
-    });
+      dispatch({
+        type: SET_POKEMON_INFO,
+        payload: response,
+      });
 
-    const result = await Promise.all(
-      response.results.map(
-        async (el: PokeItem) => await PokemonService.getPokemonDetails(el.name),
-      ),
-    );
+      const result = await Promise.all(
+        response.results.map(
+          async (el: PokeItem) =>
+            await PokemonService.getPokemonDetails(el.name),
+        ),
+      );
 
-    dispatch({
-      type: SET_POKEMONS,
-      payload: result,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+      dispatch({
+        type: SET_POKEMONS,
+        payload: result,
+      });
+
+      dispatch(setPickerItems());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const updatePokemons =
-  () => async (dispatch: Dispatch, getState: () => RootState) => {
+  () => async (dispatch: Dispatch | any, getState: () => RootState) => {
     try {
       const next = getState().pokemons.next;
 
@@ -56,6 +61,8 @@ export const updatePokemons =
         type: UPDATE_POKEMONS,
         payload: result,
       });
+
+      dispatch(setPickerItems());
     } catch (error) {
       console.log(error);
     }
@@ -95,8 +102,46 @@ export const setPokemonsByType =
           type: SET_POKEMONS,
           payload: result,
         });
+
+        dispatch(setPickerItems());
       } catch (error) {
         console.log(error);
       }
     }
+  };
+
+export const setPokemonsByName =
+  (name: string | undefined) => async (dispatch: Dispatch | any) => {
+    try {
+      if (name !== undefined) {
+        const response = await PokemonService.getPokemonDetails(name);
+
+        dispatch({
+          type: SET_POKEMONS,
+          payload: [response],
+        });
+      }
+    } catch (error) {
+      console.log('name is not selected');
+      console.log(error);
+    }
+  };
+
+export const setPickerItems =
+  () => async (dispatch: Dispatch | any, getState: () => RootState) => {
+    const pokemons = getState().pokemons.pokemons;
+
+    const items = [];
+
+    for (let index = 1; index < pokemons.length; index++) {
+      items.push({
+        value: pokemons[index].name,
+        label: pokemons[index].name,
+      });
+    }
+
+    dispatch({
+      type: SET_PICKER_ITEMS,
+      payload: items,
+    });
   };
