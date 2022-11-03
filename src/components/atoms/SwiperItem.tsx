@@ -1,4 +1,11 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import {Pokemon, PokemonType} from 'pokenode-ts';
 import {Colors, pokemonTypeBackgrounds} from '../../constants/Colors';
@@ -9,6 +16,8 @@ interface SwiperItemProps {
   pokemon: Pokemon;
   handleNavigate: (item: Pokemon) => void;
 }
+
+const {width} = Dimensions.get('window');
 
 const SwiperItem: React.FC<SwiperItemProps> = ({pokemon, handleNavigate}) => {
   const handleRenderTypesItem = () => {
@@ -48,11 +57,11 @@ export default SwiperItem;
 
 const styles = StyleSheet.create({
   slideContainer: {
+    width: width,
     flex: 1,
     paddingHorizontal: 29,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB',
   },
   text: {
     fontFamily: Fonts.ROBOTO_BOLD,

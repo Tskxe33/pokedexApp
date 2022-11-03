@@ -5,7 +5,7 @@ import {Colors} from '../../constants/Colors';
 import {Fonts} from '../../constants/Fonts';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../redux/reducers';
-import {setPokemonsByName} from '../../redux/actions/PokemonActions';
+import {SEARCH_POKEMON} from '../../redux/actions/actionTypes/pokemonsActionTypes';
 
 const NAPokemonPicker = () => {
   const pickerItems = useSelector(
@@ -20,7 +20,12 @@ const NAPokemonPicker = () => {
   const onPress = () => arrowOpen.current.onDownArrow();
 
   useEffect(() => {
-    dispatch(setPokemonsByName(selectedItem));
+    if (selectedItem) {
+      dispatch({
+        type: SEARCH_POKEMON,
+        payload: selectedItem,
+      });
+    }
   }, [selectedItem]);
 
   return (
