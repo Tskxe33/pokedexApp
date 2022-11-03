@@ -26,6 +26,7 @@ const TypesList: React.FC<TypesListProps> = ({allTypes}) => {
         renderItem={handleRenderListItem}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
+        keyExtractor={(item: TypeItem, index) => item.name + index}
       />
     </View>
   );

@@ -59,16 +59,15 @@ export default TypesListItem;
 const styles = StyleSheet.create({
   itemName: {
     fontFamily: Fonts.ROBOTO_REGULAR,
-    fontSize: 18,
+    fontSize: 19,
     color: Colors.COLOR_WHITE,
     textTransform: 'capitalize',
     textAlign: 'center',
     width: '100%',
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
 
   itemContainer: {
-    flexDirection: 'row',
     marginBottom: 10,
     borderRadius: 4,
   },
