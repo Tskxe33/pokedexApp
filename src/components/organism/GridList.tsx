@@ -37,6 +37,7 @@ const GridList: React.FC<GridListProps> = ({pokemons}) => {
           <Text style={styles.gridHeading}>Pokemon List</Text>
         }
         data={pokemons}
+        keyExtractor={(item: Pokemon, index) => item.name + index}
         renderItem={handleRenderListItem}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}

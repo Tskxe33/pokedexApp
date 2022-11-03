@@ -15,13 +15,12 @@ const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
   const dispatch = useDispatch<any>();
   const listRef = useRef(null);
 
-  const onChangeIndex = item => {
+  const onChangeIndex = () => {
     let current = listRef!.current.getCurrentIndex();
     let prev = listRef!.current.getPrevIndex();
 
     console.log('pokemon length', pokemons.length);
 
-    console.log(item);
     console.log('current page is : ', current);
 
     if (current === pokemons.length - 1) {

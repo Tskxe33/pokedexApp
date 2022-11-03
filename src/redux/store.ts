@@ -9,6 +9,7 @@ const middleware = [thunk];
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  whitelist: ['users'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store: Store = createStore(
