@@ -11,6 +11,7 @@ import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';
 import {Pokemon} from 'pokenode-ts';
 import PokemonDetailsScreen from '../screens/PokemonDetailsScreen';
+import {Colors} from '../constants/Colors';
 
 export type SwiperNavigatorParamList = {
   [AppRoute.SWIPER_SCREEN]: undefined;
@@ -40,6 +41,8 @@ const SwiperNavigator: React.FC = () => {
       screenOptions={{
         animation: 'fade',
         title: '',
+        headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
+
         headerRight: () => (
           <NAHeaderButton onPress={() => dispatch(signOut())} />
         ),

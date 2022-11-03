@@ -42,6 +42,7 @@ const GridList: React.FC<GridListProps> = ({pokemons}) => {
         showsVerticalScrollIndicator={false}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={1}
+        numColumns={2}
       />
     </View>
   );
@@ -58,9 +59,10 @@ const styles = StyleSheet.create({
     color: Colors.COLOR_BLACK,
   },
   listContainer: {
+    paddingLeft: 15,
+    paddingRight: 18,
     marginTop: 20,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
     paddingBottom: 60,
   },
 });

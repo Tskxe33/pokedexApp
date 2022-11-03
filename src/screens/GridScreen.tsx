@@ -20,7 +20,6 @@ export default GridScreen;
 const styles = StyleSheet.create({
   gridContainer: {
     flex: 1,
-    paddingHorizontal: 29,
     backgroundColor: Colors.COLOR_WHITE,
   },
 });

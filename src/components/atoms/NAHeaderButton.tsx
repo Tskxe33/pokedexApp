@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: Fonts.ROBOTO_REGULAR,
     fontSize: 18,
-    color: Colors.COLOR_BLACK,
+    color: Colors.COLOR_WHITE,
     paddingHorizontal: 18,
   },
 });

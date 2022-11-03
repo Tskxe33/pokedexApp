@@ -12,6 +12,7 @@ import {Colors} from '../constants/Colors';
 import NATabBarItem from '../components/atoms/NATabBarItem';
 import GridNavigator from './GridNavigator';
 import TypesNavigator from './TypesNavigator';
+import {Images} from '../constants/Images';
 
 export type NewsParamList = {
   [AppRoute.SWIPER_NAVIGATOR]: undefined;
@@ -45,7 +46,11 @@ const MainNavigator: React.FC = () => {
         component={SwiperNavigator}
         options={() => ({
           tabBarIcon: ({focused}) => (
-            <NATabBarItem focused={focused} title={'Swiper'} />
+            <NATabBarItem
+              focused={focused}
+              title={'Swiper'}
+              icon={Images.SWIPE_ICON}
+            />
           ),
           tabBarBackground: () => tabBackground,
         })}
@@ -55,7 +60,11 @@ const MainNavigator: React.FC = () => {
         component={GridNavigator}
         options={() => ({
           tabBarIcon: ({focused}) => (
-            <NATabBarItem focused={focused} title={'Grid'} />
+            <NATabBarItem
+              focused={focused}
+              title={'Grid'}
+              icon={Images.GRID_ICON}
+            />
           ),
           tabBarBackground: () => tabBackground,
         })}
@@ -66,7 +75,11 @@ const MainNavigator: React.FC = () => {
         component={TypesNavigator}
         options={() => ({
           tabBarIcon: ({focused}) => (
-            <NATabBarItem focused={focused} title={'Types'} />
+            <NATabBarItem
+              focused={focused}
+              title={'Types'}
+              icon={Images.TYPES_ICON}
+            />
           ),
           tabBarBackground: () => tabBackground,
         })}
@@ -79,7 +92,7 @@ export default MainNavigator;
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: Colors.COLOR_WHITE,
+    backgroundColor: Colors.COLOR_PRIMARY,
     ...StyleSheet.absoluteFillObject,
   },
 
