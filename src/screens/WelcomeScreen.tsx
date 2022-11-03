@@ -1,12 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import {StyleSheet, Text} from 'react-native';
+import React from 'react';
 import {WelcomeScreenProps} from '../navigators/InitialNavigator';
 import {Fonts} from '../constants/Fonts';
 import {Colors} from '../constants/Colors';
 import LinearGradient from 'react-native-linear-gradient';
-import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import {useDispatch} from 'react-redux';
 import {signIn} from '../redux/actions/UsersAction';
+import NALoginButton from '../components/atoms/NALoginButton';
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch<any>();
@@ -24,11 +24,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
       colors={[Colors.LG_DARK, Colors.LG_LIGHT]}>
       <Text style={styles.mainHeading}>Pokedex</Text>
       <Text style={styles.subHeading}>All pokemon in one place</Text>
-      <GoogleSigninButton
-        style={styles.googleButton}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Light}
-        onPress={handleSignIn}
+      <NALoginButton
+        handleSignIn={handleSignIn}
+        title={`Sign in with Google`}
       />
     </LinearGradient>
   );

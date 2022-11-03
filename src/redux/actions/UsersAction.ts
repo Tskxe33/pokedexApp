@@ -11,10 +11,13 @@ import {
 export const signIn = () => async (dispatch: Dispatch) => {
   try {
     const response = await LoginService.signIn();
-    dispatch({
-      type: SET_USER,
-      payload: response,
-    });
+
+    if (response?.user) {
+      dispatch({
+        type: SET_USER,
+        payload: response,
+      });
+    }
   } catch (error) {
     console.log(error);
   }
