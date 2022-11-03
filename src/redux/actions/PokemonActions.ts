@@ -110,23 +110,6 @@ export const setPokemonsByType =
     }
   };
 
-export const setPokemonsByName =
-  (name: string | undefined) => async (dispatch: Dispatch | any) => {
-    try {
-      if (name !== undefined) {
-        const response = await PokemonService.getPokemonDetails(name);
-
-        dispatch({
-          type: SET_POKEMONS,
-          payload: [response],
-        });
-      }
-    } catch (error) {
-      console.log('name is not selected');
-      console.log(error);
-    }
-  };
-
 export const setPickerItems =
   () => async (dispatch: Dispatch | any, getState: () => RootState) => {
     const pokemons = getState().pokemons.pokemons;

@@ -1,12 +1,12 @@
 import {User} from '../../models/Users';
 import {
+  SEARCH_POKEMON,
   SET_ALL_TYPES,
   SET_PICKER_ITEMS,
   SET_POKEMONS,
   SET_POKEMON_INFO,
   SET_SELECTED_TYPE,
   UPDATE_POKEMONS,
-  UPDATE_TYPES,
 } from './actionTypes/pokemonsActionTypes';
 import {
   SET_USER,
@@ -53,8 +53,8 @@ export type PokemonAction =
       payload: string;
     }
   | {
-      type: UPDATE_TYPES;
-      payload: TypeItem[];
+      type: SEARCH_POKEMON;
+      payload: string;
     }
   | {
       type: SET_PICKER_ITEMS;

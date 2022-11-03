@@ -1,5 +1,6 @@
 import {PokemonAction} from '../actions/actions.types';
 import {
+  SEARCH_POKEMON,
   SET_ALL_TYPES,
   SET_PICKER_ITEMS,
   SET_POKEMONS,
@@ -62,6 +63,15 @@ const pokemonReducer = (
       return {
         ...state,
         selectedType: action.payload,
+      };
+
+    case SEARCH_POKEMON:
+      return {
+        ...state,
+        pokemons: [
+          ...state.pokemons.filter(pokemon => pokemon.name === action.payload),
+          ...state.pokemons.filter(pokemon => pokemon.name !== action.payload),
+        ],
       };
 
     case SET_PICKER_ITEMS:

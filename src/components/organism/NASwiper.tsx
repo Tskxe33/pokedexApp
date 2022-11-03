@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import Swiper from 'react-native-swiper';
+import {ListRenderItem} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import SwiperItem from '../atoms/SwiperItem';
 import {Pokemon} from 'pokenode-ts';
 import {useDispatch} from 'react-redux';
 import {updatePokemons} from '../../redux/actions/PokemonActions';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
 
 interface NASwiperProps {
   pokemons: Pokemon[];
@@ -13,35 +13,45 @@ interface NASwiperProps {
 
 const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
   const dispatch = useDispatch<any>();
+  const listRef = useRef(null);
 
-  const handleLoadMore = (index: number) => {
-    if (index === pokemons.length - 1) {
+  const onChangeIndex = item => {
+    let current = listRef!.current.getCurrentIndex();
+    let prev = listRef!.current.getPrevIndex();
+
+    console.log('pokemon length', pokemons.length);
+
+    console.log(item);
+    console.log('current page is : ', current);
+
+    if (current === pokemons.length - 1) {
       dispatch(updatePokemons());
     }
   };
 
-  const handleRenderSwiperItem = () => {
-    return pokemons.map((pokemon: Pokemon) => {
-      return (
-        <SwiperItem
-          pokemon={pokemon}
-          key={pokemon.id}
-          handleNavigate={handleNavigate}
-        />
-      );
-    });
+  const handleRenderSwiperItem: ListRenderItem<Pokemon> = ({
+    item,
+  }: {
+    item: Pokemon;
+  }) => {
+    return (
+      <SwiperItem
+        pokemon={item}
+        key={item.id}
+        handleNavigate={handleNavigate}
+      />
+    );
   };
 
   return (
-    <Swiper
-      showsPagination={false}
-      loop={false}
-      onIndexChanged={index => handleLoadMore(index)}>
-      {handleRenderSwiperItem()}
-    </Swiper>
+    <SwiperFlatList
+      index={pokemons.length - 1}
+      data={pokemons}
+      renderItem={handleRenderSwiperItem}
+      ref={listRef}
+      onChangeIndex={onChangeIndex}
+    />
   );
 };
 
 export default NASwiper;
-
-const styles = StyleSheet.create({});
