@@ -41,12 +41,13 @@ export default GridListItem;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    width: '100%',
+    width: '50%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    marginBottom: 10,
     borderRadius: 10,
+    marginBottom: 10,
+    marginRight: 3,
   },
 
   image: {
