@@ -12,6 +12,7 @@ import {
   SET_USER,
   SET_LOGOUT,
   IS_LOGGED_IN,
+  SET_MODAL_VISIBLE,
 } from './actionTypes/usersActionTypes';
 
 import {Pokemon} from 'pokenode-ts';
@@ -29,6 +30,10 @@ export type UsersAction =
   | {
       type: SET_LOGOUT;
       payload: User;
+    }
+  | {
+      type: SET_MODAL_VISIBLE;
+      payload: boolean;
     };
 
 export type PokemonAction =

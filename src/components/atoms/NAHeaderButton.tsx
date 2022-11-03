@@ -2,6 +2,8 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Fonts} from '../../constants/Fonts';
 import {Colors} from '../../constants/Colors';
+import {useDispatch} from 'react-redux';
+import {SET_MODAL_VISIBLE} from '../../redux/actions/actionTypes/usersActionTypes';
 
 interface NAHeaderButton {
   onPress: () => void;

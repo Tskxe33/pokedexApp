@@ -12,6 +12,7 @@ import {signOut} from '../redux/actions/UsersAction';
 import {Pokemon} from 'pokenode-ts';
 import PokemonDetailsScreen from '../screens/PokemonDetailsScreen';
 import {Colors} from '../constants/Colors';
+import {SET_MODAL_VISIBLE} from '../redux/actions/actionTypes/usersActionTypes';
 
 export type SwiperNavigatorParamList = {
   [AppRoute.SWIPER_SCREEN]: undefined;
@@ -35,6 +36,13 @@ const Stack = createNativeStackNavigator<SwiperNavigatorParamList>();
 
 const SwiperNavigator: React.FC = () => {
   const dispatch = useDispatch<any>();
+
+  const handleOpenModal = () => {
+    dispatch({
+      type: SET_MODAL_VISIBLE,
+      payload: true,
+    });
+  };
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.SWIPER_SCREEN}
@@ -43,9 +51,7 @@ const SwiperNavigator: React.FC = () => {
         title: '',
         headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
 
-        headerRight: () => (
-          <NAHeaderButton onPress={() => dispatch(signOut())} />
-        ),
+        headerRight: () => <NAHeaderButton onPress={handleOpenModal} />,
       }}>
       <Stack.Screen name={AppRoute.SWIPER_SCREEN} component={SwiperScreen} />
       <Stack.Screen

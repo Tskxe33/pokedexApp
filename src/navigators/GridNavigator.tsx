@@ -10,6 +10,7 @@ import {useDispatch} from 'react-redux';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {signOut} from '../redux/actions/UsersAction';
 import {Colors} from '../constants/Colors';
+import {SET_MODAL_VISIBLE} from '../redux/actions/actionTypes/usersActionTypes';
 
 export type GridNavigatorParamList = {
   [AppRoute.GRID_SCREEN]: undefined;
@@ -29,6 +30,13 @@ const Stack = createNativeStackNavigator<GridNavigatorParamList>();
 const GridNavigator: React.FC = () => {
   const dispatch = useDispatch<any>();
 
+  const handleOpenModal = () => {
+    dispatch({
+      type: SET_MODAL_VISIBLE,
+      payload: true,
+    });
+  };
+
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.GRID_SCREEN}
@@ -36,9 +44,7 @@ const GridNavigator: React.FC = () => {
         animation: 'fade',
         title: '',
         headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
-        headerRight: () => (
-          <NAHeaderButton onPress={() => dispatch(signOut())} />
-        ),
+        headerRight: () => <NAHeaderButton onPress={handleOpenModal} />,
       }}>
       <Stack.Screen name={AppRoute.GRID_SCREEN} component={GridScreen} />
     </Stack.Navigator>

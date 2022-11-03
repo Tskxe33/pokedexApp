@@ -6,6 +6,8 @@ export enum Colors {
   COLOR_WHITE = '#FFFFFF',
   COLOR_BLACK = '#2c3e50',
 
+  COLOR_MODAL = 'rgba(0,0,0,.6)',
+
   LG_LIGHT = '#38ef7d',
   LG_DARK = '#1f4037',
 }

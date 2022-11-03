@@ -4,17 +4,20 @@ import {UsersAction} from '../actions/actions.types';
 import {
   IS_LOGGED_IN,
   SET_LOGOUT,
+  SET_MODAL_VISIBLE,
   SET_USER,
 } from '../actions/actionTypes/usersActionTypes';
 
 interface InitialStateProps {
   user: User;
   isLoggedIn: boolean;
+  setModalVisible: boolean;
 }
 
 const initialState: InitialStateProps = {
   user: userInitialState,
   isLoggedIn: false,
+  setModalVisible: false,
 };
 
 const usersReducer = (
@@ -33,10 +36,18 @@ const usersReducer = (
         ...state,
         user: action.payload,
         isLoggedIn: false,
+        setModalVisible: false,
       };
     case IS_LOGGED_IN:
       return {
         ...state,
+      };
+
+    case SET_MODAL_VISIBLE:
+      console.log(action.payload);
+      return {
+        ...state,
+        setModalVisible: action.payload,
       };
 
     default:
