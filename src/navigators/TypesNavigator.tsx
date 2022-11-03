@@ -9,6 +9,7 @@ import TypesScreen from '../screens/TypesScreen';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';
+import {Colors} from '../constants/Colors';
 
 export type TypesNavigatorParamList = {
   [AppRoute.TYPES_SCREEN]: undefined;
@@ -34,6 +35,7 @@ const TypesNavigator: React.FC = () => {
       screenOptions={{
         animation: 'fade',
         title: '',
+        headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
         headerRight: () => (
           <NAHeaderButton onPress={() => dispatch(signOut())} />
         ),

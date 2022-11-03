@@ -9,7 +9,7 @@ import GridScreen from '../screens/GridScreen';
 import {useDispatch} from 'react-redux';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {signOut} from '../redux/actions/UsersAction';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from '../constants/Colors';
 
 export type GridNavigatorParamList = {
   [AppRoute.GRID_SCREEN]: undefined;
@@ -35,6 +35,7 @@ const GridNavigator: React.FC = () => {
       screenOptions={{
         animation: 'fade',
         title: '',
+        headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
         headerRight: () => (
           <NAHeaderButton onPress={() => dispatch(signOut())} />
         ),
