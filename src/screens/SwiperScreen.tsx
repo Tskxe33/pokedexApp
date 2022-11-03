@@ -13,6 +13,7 @@ import {Pokemon} from 'pokenode-ts';
 import {AppRoute} from '../constants/AppRoute';
 import NAPokemonPicker from '../components/molecules/NAPokemonPicker';
 import {Colors} from '../constants/Colors';
+import NAPopup from '../components/atoms/NAPopup';
 
 const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
   const pokemons = useSelector((state: RootState) => state.pokemons.pokemons);
@@ -37,10 +38,13 @@ const SwiperScreen: React.FC<SwiperScreenProps> = ({navigation}) => {
   };
 
   return (
-    <View style={styles.swiperContainer}>
-      <NAPokemonPicker />
-      <NASwiper pokemons={pokemons} handleNavigate={handleNavigate} />
-    </View>
+    <>
+      <View style={styles.swiperContainer}>
+        <NAPokemonPicker />
+        <NASwiper pokemons={pokemons} handleNavigate={handleNavigate} />
+      </View>
+      <NAPopup title={`Are you sure you want to log out?`} />
+    </>
   );
 };
 

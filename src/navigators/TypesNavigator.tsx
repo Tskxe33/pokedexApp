@@ -10,6 +10,7 @@ import NAHeaderButton from '../components/atoms/NAHeaderButton';
 import {useDispatch} from 'react-redux';
 import {signOut} from '../redux/actions/UsersAction';
 import {Colors} from '../constants/Colors';
+import {SET_MODAL_VISIBLE} from '../redux/actions/actionTypes/usersActionTypes';
 
 export type TypesNavigatorParamList = {
   [AppRoute.TYPES_SCREEN]: undefined;
@@ -29,6 +30,12 @@ const Stack = createNativeStackNavigator<TypesNavigatorParamList>();
 const TypesNavigator: React.FC = () => {
   const dispatch = useDispatch<any>();
 
+  const handleOpenModal = () => {
+    dispatch({
+      type: SET_MODAL_VISIBLE,
+      payload: true,
+    });
+  };
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.TYPES_SCREEN}
@@ -36,9 +43,7 @@ const TypesNavigator: React.FC = () => {
         animation: 'fade',
         title: '',
         headerStyle: {backgroundColor: Colors.COLOR_PRIMARY},
-        headerRight: () => (
-          <NAHeaderButton onPress={() => dispatch(signOut())} />
-        ),
+        headerRight: () => <NAHeaderButton onPress={handleOpenModal} />,
       }}>
       <Stack.Screen name={AppRoute.TYPES_SCREEN} component={TypesScreen} />
     </Stack.Navigator>
