@@ -44,7 +44,6 @@ const usersReducer = (
       };
 
     case SET_MODAL_VISIBLE:
-      console.log(action.payload);
       return {
         ...state,
         setModalVisible: action.payload,

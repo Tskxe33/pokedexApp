@@ -1,10 +1,11 @@
 import {ListRenderItem} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import SwiperItem from '../atoms/SwiperItem';
 import {Pokemon} from 'pokenode-ts';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {updatePokemons} from '../../redux/actions/PokemonActions';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import {RootState} from '../../redux/reducers';
 
 interface NASwiperProps {
   pokemons: Pokemon[];
@@ -13,20 +14,25 @@ interface NASwiperProps {
 
 const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
   const dispatch = useDispatch<any>();
-  const listRef = useRef(null);
+  const listRef: any = useRef(null);
+
+  const selectedPokemon = useSelector(
+    (state: RootState) => state.pokemons.selectedPokemon,
+  );
 
   const onChangeIndex = () => {
     let current = listRef!.current.getCurrentIndex();
-    let prev = listRef!.current.getPrevIndex();
-
-    console.log('pokemon length', pokemons.length);
-
-    console.log('current page is : ', current);
 
     if (current === pokemons.length - 1) {
       dispatch(updatePokemons());
     }
   };
+
+  useEffect(() => {
+    if (listRef!.current.getCurrentIndex()) {
+      listRef!.current.goToFirstIndex();
+    }
+  }, [selectedPokemon]);
 
   const handleRenderSwiperItem: ListRenderItem<Pokemon> = ({
     item,
@@ -43,8 +49,8 @@ const NASwiper: React.FC<NASwiperProps> = ({pokemons, handleNavigate}) => {
   };
 
   return (
+    // Swiper not supporting loop feature
     <SwiperFlatList
-      index={pokemons.length - 1}
       data={pokemons}
       renderItem={handleRenderSwiperItem}
       ref={listRef}

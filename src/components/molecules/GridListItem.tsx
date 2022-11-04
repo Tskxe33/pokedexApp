@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {Pokemon} from 'pokenode-ts';
 import {Colors, pokemonTypeBackgrounds} from '../../constants/Colors';
 import {Fonts} from '../../constants/Fonts';
@@ -37,7 +37,7 @@ const GridListItem: React.FC<GridListItemProps> = ({item}) => {
   );
 };
 
-export default GridListItem;
+export default memo(GridListItem);
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 60,
-    height: 60,
+    width: 48,
+    height: 48,
     marginBottom: 33,
     marginTop: 10,
   },

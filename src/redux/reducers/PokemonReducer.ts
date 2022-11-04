@@ -1,5 +1,6 @@
 import {PokemonAction} from '../actions/actions.types';
 import {
+  GO_TO_POKEMON,
   SEARCH_POKEMON,
   SET_ALL_TYPES,
   SET_PICKER_ITEMS,
@@ -18,6 +19,7 @@ interface InitialStateProps {
   allTypes: TypeItem[];
   selectedType: string;
   pickerItems: PickerItem[];
+  selectedPokemon: string;
 }
 
 const initialState: InitialStateProps = {
@@ -27,6 +29,7 @@ const initialState: InitialStateProps = {
   allTypes: [],
   selectedType: '',
   pickerItems: [],
+  selectedPokemon: '',
 };
 
 const pokemonReducer = (
@@ -78,6 +81,12 @@ const pokemonReducer = (
       return {
         ...state,
         pickerItems: action.payload,
+      };
+
+    case GO_TO_POKEMON:
+      return {
+        ...state,
+        selectedPokemon: action.payload,
       };
     default:
       return state;
