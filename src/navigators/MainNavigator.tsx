@@ -14,22 +14,22 @@ import GridNavigator from './GridNavigator';
 import TypesNavigator from './TypesNavigator';
 import {Images} from '../constants/Images';
 
-export type NewsParamList = {
+export type MainNavigatorParamList = {
   [AppRoute.SWIPER_NAVIGATOR]: undefined;
   [AppRoute.GRID_NAVIGATOR]: undefined;
   [AppRoute.TYPES_NAVIGATOR]: undefined;
 };
 
-export interface Props<Screen extends keyof NewsParamList> {
-  navigation: NativeStackNavigationProp<NewsParamList, Screen>;
-  route: RouteProp<NewsParamList, Screen>;
+export interface Props<Screen extends keyof MainNavigatorParamList> {
+  navigation: NativeStackNavigationProp<MainNavigatorParamList, Screen>;
+  route: RouteProp<MainNavigatorParamList, Screen>;
 }
 
-export type SwiperNavigatorProps = Props<AppRoute.SWIPER_NAVIGATOR>;
-export type GridNavigatorProps = Props<AppRoute.GRID_NAVIGATOR>;
-export type TypesNavigatorProps = Props<AppRoute.TYPES_NAVIGATOR>;
+export type SwiperNavigatorComponentProps = Props<AppRoute.SWIPER_NAVIGATOR>;
+export type GridNavigatorComponentProps = Props<AppRoute.GRID_NAVIGATOR>;
+export type TypesNavigatorComponentProps = Props<AppRoute.TYPES_NAVIGATOR>;
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<MainNavigatorParamList>();
 
 const MainNavigator: React.FC = () => {
   const tabBackground = <View style={styles.viewContainer}></View>;

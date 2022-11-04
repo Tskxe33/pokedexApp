@@ -3,6 +3,8 @@ import {PokeItem} from '../../models/Pokemon';
 import PokemonService from '../../service/PokemonService';
 import {RootState} from '../reducers';
 import {
+  GO_TO_POKEMON,
+  SEARCH_POKEMON,
   SET_ALL_TYPES,
   SET_PICKER_ITEMS,
   SET_POKEMONS,
@@ -126,5 +128,17 @@ export const setPickerItems =
     dispatch({
       type: SET_PICKER_ITEMS,
       payload: items,
+    });
+  };
+
+export const goToSelectedPokemon =
+  (selectedItem: string) => async (dispatch: Dispatch | any) => {
+    dispatch({
+      type: SEARCH_POKEMON,
+      payload: selectedItem,
+    });
+    dispatch({
+      type: GO_TO_POKEMON,
+      payload: selectedItem,
     });
   };

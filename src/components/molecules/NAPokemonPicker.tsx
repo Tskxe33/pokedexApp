@@ -5,7 +5,7 @@ import {Colors} from '../../constants/Colors';
 import {Fonts} from '../../constants/Fonts';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../redux/reducers';
-import {SEARCH_POKEMON} from '../../redux/actions/actionTypes/pokemonsActionTypes';
+import {goToSelectedPokemon} from '../../redux/actions/PokemonActions';
 
 const NAPokemonPicker = () => {
   const pickerItems = useSelector(
@@ -21,10 +21,7 @@ const NAPokemonPicker = () => {
 
   useEffect(() => {
     if (selectedItem) {
-      dispatch({
-        type: SEARCH_POKEMON,
-        payload: selectedItem,
-      });
+      dispatch(goToSelectedPokemon(selectedItem));
     }
   }, [selectedItem]);
 

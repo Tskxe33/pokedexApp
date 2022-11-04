@@ -3,6 +3,7 @@ import {
   SEARCH_POKEMON,
   SET_ALL_TYPES,
   SET_PICKER_ITEMS,
+  GO_TO_POKEMON,
   SET_POKEMONS,
   SET_POKEMON_INFO,
   SET_SELECTED_TYPE,
@@ -59,6 +60,10 @@ export type PokemonAction =
     }
   | {
       type: SEARCH_POKEMON;
+      payload: string;
+    }
+  | {
+      type: GO_TO_POKEMON;
       payload: string;
     }
   | {

@@ -8,7 +8,6 @@ import {AppRoute} from '../constants/AppRoute';
 import GridScreen from '../screens/GridScreen';
 import {useDispatch} from 'react-redux';
 import NAHeaderButton from '../components/atoms/NAHeaderButton';
-import {signOut} from '../redux/actions/UsersAction';
 import {Colors} from '../constants/Colors';
 import {SET_MODAL_VISIBLE} from '../redux/actions/actionTypes/usersActionTypes';
 

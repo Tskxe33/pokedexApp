@@ -18,3 +18,6 @@ export type SET_PICKER_ITEMS = typeof SET_PICKER_ITEMS;
 
 export const SEARCH_POKEMON = 'SEARCH_POKEMON';
 export type SEARCH_POKEMON = typeof SEARCH_POKEMON;
+
+export const GO_TO_POKEMON = 'GO_TO_POKEMON';
+export type GO_TO_POKEMON = typeof GO_TO_POKEMON;
